@@ -1,9 +1,9 @@
-resource "google_compute_instance" "Database" {
-  name         = "server1"
+resource "google_compute_instance" "financeserver2" {
+  name         = "financeserver2"
   machine_type = "e2-medium"
   zone         = "us-east1-b"
   project      = "demoterrform"
-
+  
   tags = ["foo", "bar"]
 
   boot_disk {
@@ -13,21 +13,17 @@ resource "google_compute_instance" "Database" {
   }
 
   // Local SSD disk
-  scratch_disk {
-    interface = "SCSI"
-  }
+  #scratch_disk {
+  #interface = "SCSI"
+  #}
 
   network_interface {
-    network = "default"
-
+    network    = "default"
+   
     access_config {
       // Ephemeral public IP
     }
   }
-
-  #metadata = {
-   # foo = "bar"
-  #}
 
   metadata_startup_script = "echo hi > /test.txt"
 
