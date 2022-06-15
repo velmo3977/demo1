@@ -2,6 +2,7 @@ resource "google_compute_instance" "Database" {
   name         = "server1"
   machine_type = "e2-medium"
   zone         = "us-east1-b"
+  project      = "demoterrform"
 
   tags = ["foo", "bar"]
 
@@ -24,15 +25,16 @@ resource "google_compute_instance" "Database" {
     }
   }
 
-  metadata = {
-    foo = "bar"
-  }
+  #metadata = {
+   # foo = "bar"
+  #}
 
   metadata_startup_script = "echo hi > /test.txt"
 
   service_account {
     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
-    email  = google_service_account.default.email
-    scopes = ["cloud-platform"]
+    #email  = terraform-sa-691@demoterrform.iam.gserviceaccount.com
+    scopes = ["userinfo-email", "compute-ro", "storage-ro"]
+    #scopes = ["cloud-platform"]
   }
 }
