@@ -1,5 +1,5 @@
 resource "google_compute_instance" "financeserver2" {
-  name         = "financeserver2"
+  name         = "financeserver3"
   machine_type = "e2-medium"
   zone         = "us-east1-b"
   project      = "demoterrform"
