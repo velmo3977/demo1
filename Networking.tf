@@ -5,7 +5,7 @@ resource "google_compute_network" "vpc_network" {
   mtu                     = 1460
 }
 
-resource "google_compute_network" "vpc_network" {
+resource "google_compute_network" "vpc_network1" {
   project                 = "demoterrform"
   name                    = "vpc-network1"
   auto_create_subnetworks = false
